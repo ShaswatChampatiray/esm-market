@@ -1,6 +1,6 @@
 package com.techacademy.esm.market.controller;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -62,8 +62,8 @@ public class MarketController {
 
 	@GetMapping(value = {"/stock/get/{companyCode}", "/stock/get/{companyCode}/{startDate}/{endDate}"})
 	public Stocks getStock(@PathVariable String companyCode,
-			@PathVariable @DateTimeFormat(pattern = "MM-dd-yyyy") Optional<LocalDate> startDate,
-			@PathVariable @DateTimeFormat(pattern = "MM-dd-yyyy") Optional<LocalDate> endDate) {
+			@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime> startDate,
+			@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime> endDate) {
 		logger.info("MarketController :: Invoked getStock method");
 		
 		return marketService.getStock(companyCode, startDate, endDate);
