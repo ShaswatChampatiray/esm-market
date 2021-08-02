@@ -32,12 +32,14 @@ public class MarketController {
 	private MarketService marketService;
 	
 	@PostMapping("/company/register")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void registerCompany(@RequestBody Company company) {
 		logger.info("MarketController :: Invoked registerCompany method");
 		marketService.registerCompany(company);
 	}
 	
 	@GetMapping("/company/info/{companyCode}")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Company getCompanyByCode(@PathVariable String companyCode) {
 		logger.info("MarketController :: Invoked getCompanyByCode method");
 		return marketService.getCompanyByCode(companyCode);
@@ -51,18 +53,21 @@ public class MarketController {
 	}
 
 	@DeleteMapping("/company/delete/{companyCode}")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void deleteCompanyByCode(@PathVariable String companyCode) {
 		logger.info("MarketController :: Invoked deleteCompanyByCode method");
 		marketService.deleteCompanyByCode(companyCode);
 	}
 	
 	@PostMapping("/stock/add/{companyCode}")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void addStock(@PathVariable String companyCode, @RequestBody Stock stock) {
 		logger.info("MarketController :: Invoked addStock method");
 		marketService.addStock(companyCode, stock);
 	}
 
 	@GetMapping(value = {"/stock/get/{companyCode}", "/stock/get/{companyCode}/{startDate}/{endDate}"})
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Stocks getStock(@PathVariable String companyCode,
 			@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime> startDate,
 			@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime> endDate) {
