@@ -25,15 +25,15 @@ public class MarketService {
 
 	public Company getCompanyByCode(String companyCode) {
 		Company company = restTemplate.getForObject("http://esm-company/company/info/" + companyCode, Company.class);
-		Stock stock = restTemplate.getForObject("http://esm-stock/stock/get/latest/" + companyCode, Stock.class);
-		company.setStock(stock);
+		Stocks stocks = restTemplate.getForObject("http://esm-stock/stock/get/" + companyCode, Stocks.class);
+		company.setStocks(stocks);
 		return company;
 	}
 
 	public Companies getAllCompanies() {
 		Companies companies = restTemplate.getForObject("http://esm-company/company/getall/", Companies.class);
 		companies.getCompanies().forEach(company -> {
-			company.setStock(restTemplate.getForObject("http://esm-stock/stock/get/latest/" + company.getCompanyCode(), Stock.class));
+			company.setStocks(restTemplate.getForObject("http://esm-stock/stock/get/" + company.getCompanyCode(), Stocks.class));
 		});
 		return companies;
 	}

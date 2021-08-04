@@ -8,7 +8,7 @@ public class Company {
 	private Long companyTurnover;
 	private String companyWebsite;
 	private String stockExchange;
-	private Stock stock;
+	private Stocks stocks;
 
 	public String getCompanyCode() {
 		return companyCode;
@@ -58,12 +58,12 @@ public class Company {
 		this.stockExchange = stockExchange;
 	}
 
-	public Stock getStock() {
-		return stock;
+	public Stocks getStocks() {
+		return stocks;
 	}
 
-	public void setStock(Stock stock) {
-		this.stock = stock;
+	public void setStocks(Stocks stocks) {
+		this.stocks = stocks;
 	}
 
 
